@@ -90,6 +90,7 @@ public class HttpServer implements Runnable {
                     handler.handle(request, new RespCallback(key, this));
                     // pipelining not supported : need queue to ensure order
                     atta.decoder.reset();
+                    atta.keepalive = false;
                 }
             } while (buffer.hasRemaining()); // consume all
         } catch (ProtocolException e) {
